@@ -1,11 +1,9 @@
-"use client";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -14,9 +12,10 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useState } from "react";
 import avatarIcon from "../assets/image-avatar.png";
-import ShoppingCart from "@mui/icons-material/ShoppingCart";
 
-const pages = ["Colelctions", "Men", "Women", "About", "Contact"];
+import ShoppingCart from "./ShoppingCart";
+
+const pages = ["Collections", "Men", "Women", "About", "Contact"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = () => {
@@ -41,7 +40,14 @@ const ResponsiveAppBar = () => {
   return (
     <div>
       <AppBar position="static">
-        <Container maxWidth="xl">
+        <Container
+          maxWidth="xl"
+          sx={{
+            backgroundColor: "white",
+            color: "black",
+            boxShadow: "0 5px 2px -10px ",
+          }}
+        >
           <Toolbar disableGutters>
             <Typography
               variant="h6"
@@ -49,12 +55,13 @@ const ResponsiveAppBar = () => {
               component="a"
               href="#app-bar-with-responsive-menu"
               sx={{
-                mr: 2,
+                mr: 5,
                 display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
+                fontFamily: "Urbanist",
+                fontSize: "32px",
+                fontWeight: 600,
+                letterSpacing: "0.1rem",
+                color: "black",
                 textDecoration: "none",
               }}
             >
@@ -117,22 +124,19 @@ const ResponsiveAppBar = () => {
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
+                  sx={{ my: 2, color: "inherit", display: "block" }}
                 >
                   {page}
                 </Button>
               ))}
             </Box>
-            <Box sx={{ flexGrow: 0 }}>
+            <Box sx={{ flexGrow: 0, display: { xs: "flex", mr: 10 } }}>
               <ShoppingCart />
             </Box>
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar
-                    alt="Avatar Placeholder"
-                    src="../assets/image-avatar.png"
-                  />
+                  <Avatar alt="Avatar Placeholder" src={avatarIcon} />
                 </IconButton>
               </Tooltip>
               <Menu
