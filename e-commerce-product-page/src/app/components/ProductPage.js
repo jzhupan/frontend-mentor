@@ -5,6 +5,8 @@ import Grid from "@mui/material/Grid";
 import Image from "next/image";
 import product1 from "../assets/image-product-1.jpg";
 
+import productBorder from "../page.module.scss";
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -31,11 +33,16 @@ const ProductPage = () => {
                 position: "relative",
                 width: "300px",
                 height: "300px",
-                borderRadius: "50%",
-                alignContent: "center",
               }}
             >
-              <Image src={product1} alt="product-1" fill center />
+              <Image
+                src={product1}
+                alt="product-1"
+                style={{
+                  borderRadius: productBorder.productBorderRadius,
+                }}
+                fill
+              />
             </Box>
           </Item>
           <Item sx={{ width: 400, height: 100, margin: 2 }}>
